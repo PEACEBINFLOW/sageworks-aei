@@ -1,10 +1,10 @@
-# Sageworks AEI — Official Website
+# Sageworks AI — Official Website
 
-**URL:** https://peacebinflow.github.io/sageworks-aei  
+**URL:** https://peacebinflow.github.io/sageworks-ai  
 **Creator:** Peace Thabiwa  
 **Organization:** Sageworks AEI  
 
-This repository hosts the official website for the Sageworks AEI ecosystem:
+This repository hosts the official website for the Sageworks AI ecosystem:
 
 - **LAW Network (LAW-N)** — temporal, network-native data and signal layer  
 - **Network SQL / NSQL** — network-aware, time-labeled query systems  
@@ -23,7 +23,7 @@ Powered by **GitHub Pages**:
 
 - Branch: `main`
 - Directory: `/` (root)
-- Live at: https://peacebinflow.github.io/sageworks-aei
+- Live at: https://peacebinflow.github.io/sageworks-ai
 
 ---
 
