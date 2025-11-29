@@ -2,65 +2,527 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sageworks AEI — Peace Thabiwa</title>
+  <title>SageWorks AI — Temporal & Network-Native Systems</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Sageworks AEI — LAW Network, Network SQL, MindsEye, and temporal AI ecosystems by Peace Thabiwa."
+    content="SageWorks AI by Peace Thabiwa — LAW Network, MindsEye, Network SQL, LAW-T and time-labeled data ecosystems."
   />
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    :root {
+      --bg: #02040a;
+      --bg-alt: #070b18;
+      --fg: #f7f7ff;
+      --muted: #9ca0bd;
+      --accent: #ffb84d;
+      --accent-soft: rgba(255, 184, 77, 0.1);
+      --accent-2: #28c0ff;
+      --border: #20263a;
+      --card-radius: 18px;
+      --max-width: 1120px;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: radial-gradient(circle at top, #111730, #020309);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(4, 6, 16, 0.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.12rem;
+    }
+
+    .brand-title {
+      font-size: 0.95rem;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .brand-title span {
+      color: var(--accent);
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+    }
+
+    .nav-links a {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--accent-soft);
+      background: rgba(255, 255, 255, 0.03);
+      text-decoration: none;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.6rem 1.25rem 3.5rem;
+    }
+
+    /* HERO */
+
+    .hero {
+      margin-top: 1.6rem;
+      border-radius: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1.3rem;
+      padding: 1.3rem 1.3rem 1.5rem;
+      background: radial-gradient(circle at top left, #1a2141, #050610);
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin: 0 0 0.35rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 0 0 0.9rem;
+    }
+
+    .hero-mission {
+      font-size: 0.9rem;
+      color: #dcdff8;
+      margin: 0.4rem 0 1rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      background: rgba(3, 9, 24, 0.9);
+      color: var(--muted);
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      background: rgba(255, 184, 77, 0.08);
+      color: var(--fg);
+      font-size: 0.85rem;
+    }
+
+    .btn-primary {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, var(--accent), #ff7e5a);
+      color: #130b03;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      filter: brightness(1.05);
+      text-decoration: none;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .hero-visual {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top, #2b2220, #050307);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      height: 100%;
+    }
+
+    .hero-visual-caption {
+      position: absolute;
+      left: 0.65rem;
+      bottom: 0.55rem;
+      font-size: 0.72rem;
+      color: #f8e1c5;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    }
+
+    /* SECTIONS */
+
+    section {
+      margin-top: 2.6rem;
+    }
+
+    section h2 {
+      font-size: 1.35rem;
+      margin: 0 0 0.25rem;
+    }
+
+    section p.section-desc {
+      margin: 0 0 0.9rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.9rem;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 800px) {
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border);
+      background: rgba(4, 7, 20, 0.96);
+      padding: 0.9rem 1rem;
+    }
+
+    .card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.98rem;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .card-footer {
+      margin-top: 0.45rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .list-links {
+      list-style: none;
+      padding: 0;
+      margin: 0.4rem 0 0;
+      font-size: 0.84rem;
+    }
+
+    .list-links li {
+      margin-bottom: 0.22rem;
+    }
+
+    .pill {
+      display: inline-block;
+      margin-top: 0.35rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* STACK SECTION WITH IMAGE */
+
+    .stack-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    @media (max-width: 880px) {
+      .stack-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .stack-visual {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top, #07131e, #020308);
+    }
+
+    .stack-visual img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    @media (max-width: 900px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .gallery {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #050710;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 0.55rem;
+      bottom: 0.45rem;
+      right: 0.55rem;
+      font-size: 0.72rem;
+      color: #f3f1ea;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    }
+
+    /* CONTACT / FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1rem 1.25rem 1.7rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: #02040a;
+      margin-top: 2.5rem;
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="nav">
       <div class="brand">
-        <span>Sageworks AEI</span> · Peace Thabiwa
+        <div class="brand-title">
+          <span>SageWorks AI</span> · Peace Thabiwa
+        </div>
+        <div class="brand-sub">Temporal & network-native AI ecosystems</div>
       </div>
       <nav class="nav-links">
         <a href="#home">Home</a>
+        <a href="#mission">Mission</a>
         <a href="#law-network">LAW Network</a>
-        <a href="#network-sql">Network SQL</a>
         <a href="#mindseye">MindsEye</a>
-        <a href="#projects">Projects</a>
-        <a href="#dev">DEV Posts</a>
-        <a href="#kaggle">Kaggle & Datasets</a>
-        <a href="#prompts">Image Prompts</a>
+        <a href="#lawt">LAW-T & Binary</a>
+        <a href="#dev">DEV</a>
+        <a href="#kaggle">Kaggle</a>
+        <a href="#gallery">Visuals</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- HOME / HERO -->
+    <!-- HERO -->
     <section id="home" class="hero">
-      <h1 class="hero-title">Temporal & Network-Native AI Systems</h1>
-      <p class="hero-subtitle">
-        LAW Network, Network SQL, and MindsEye — an ecosystem where data, time, and cognition form a living infrastructure.
-      </p>
+      <div>
+        <h1 class="hero-title">
+          Perception <span>Redefined</span> Through Systems.
+        </h1>
+        <p class="hero-subtitle">
+          SageWorks AI is an experimental lab for LAW Network, MindsEye,
+          Network SQL, LAW-T and other frameworks that treat data,
+          time and networks as a living economy instead of static storage.
+        </p>
+        <p class="hero-mission">
+          From Google-native agents to Kaggle-driven binary ledgers, the goal is
+          simple: build temporal infrastructure that actually thinks in flows,
+          not rows.
+        </p>
 
-      <div class="hero-tags">
-        <span class="tag">LAW Network (LAW-N)</span>
-        <span class="tag">Network SQL</span>
-        <span class="tag">MindsEye OS</span>
-        <span class="tag">Sageworks AEI</span>
+        <div class="hero-tags">
+          <span class="tag">LAW-N · Network Laws</span>
+          <span class="tag">MindsEye · Agent Fabric</span>
+          <span class="tag">LAW-T · Time-Native Language</span>
+          <span class="tag">Kaggle Binary Ledgers</span>
+        </div>
+
+        <div class="hero-links">
+          <!-- TODO: replace # with actual URLs -->
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">
+            View GitHub Ecosystem
+          </a>
+          <a class="btn" href="#mission">Read the mission</a>
+        </div>
+
+        <div class="hero-meta">
+          <div>
+            <strong>Base</strong><br />
+            Botswana · building globally from the edge
+          </div>
+          <div>
+            <strong>Surfaces</strong><br />
+            GitHub · DEV Community · Kaggle · Google challenges
+          </div>
+          <div>
+            <strong>Focus</strong><br />
+            Time-labeled flows · Agent OS · Network-aware SQL
+          </div>
+        </div>
       </div>
 
-      <div class="hero-meta">
-        <div>
-          <strong>Creator</strong><br />
-          Peace Thabiwa · Sageworks AEI
+      <div class="hero-visual">
+        <!-- HERO IMAGE -->
+        <img src="assets/img/hero-eye-1.png" alt="Perception redefined through syntax poster" />
+        <div class="hero-visual-caption">
+          “Perception redefined through syntax” — one of the core visual motifs
+          behind MindsEye & LAW-T.
         </div>
-        <div>
-          <strong>Focus</strong><br />
-          Time-labeled networks · Agent fabric · Data as flows
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    <section id="mission">
+      <h2>Mission</h2>
+      <p class="section-desc">
+        SageWorks AI explores what happens when you stop treating computation as
+        isolated requests and start treating it as timelines: sequences of
+        events, trades, notifications and signals that can be measured, replayed
+        and reasoned about.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>01 — Time-Native by Default</h3>
+          <p>
+            Every system we touch assumes time is a first-class dimension.
+            LAW-T, LAW-N, MindsEye and the Kaggle Binary Ledgers all revolve
+            around the idea that “when” something happened is as important as
+            “what” happened.
+          </p>
         </div>
-        <div>
-          <strong>Links</strong><br />
-          <a href="https://github.com/PEACEBINFLOW" target="_blank" rel="noopener">GitHub</a> ·
-          <a href="https://dev.to/peacebinflow" target="_blank" rel="noopener">DEV</a> ·
-          <a href="https://www.kaggle.com/peacebinflow" target="_blank" rel="noopener">Kaggle</a> ·
-          <a href="https://forem.com/peacebinflow" target="_blank" rel="noopener">Forem</a>
+        <div class="card">
+          <h3>02 — Networks as Laws, Not Hacks</h3>
+          <p>
+            Instead of hand-wiring APIs and ad-hoc services, LAW Network treats
+            routing as a legal system: who can send what to whom, under which
+            temporal and contextual constraints.
+          </p>
+        </div>
+        <div class="card">
+          <h3>03 — Agents That Actually Remember</h3>
+          <p>
+            MindsEye tries to give agents a memory architecture that looks more
+            like a ledger and less like a short-term buffer. Perception becomes
+            a stream, not a JSON object that disappears after one response.
+          </p>
+        </div>
+        <div class="card">
+          <h3>04 — Data as a Living Economy</h3>
+          <p>
+            The endgame is an ecosystem where data moves, trades, scores and
+            evolves — not just gets stored. Trading bots, ledgers, UI, agents
+            and SQL all plug into the same temporal fabric.
+          </p>
         </div>
       </div>
     </section>
@@ -69,146 +531,114 @@
     <section id="law-network">
       <h2>LAW Network (LAW-N)</h2>
       <p class="section-desc">
-        LAW Network is the network layer of the ecosystem — routing time-labeled signals, agents, and events across systems.
-        These repos form the LAW-N core plus its SQL and NSQL extensions.
+        LAW-N is the network layer of the SageWorks AI stack. It treats every
+        interaction as a time-labeled signal crossing a graph of agents, devices
+        and services. Instead of just “calling an API”, you define laws:
+        priority, routes, access and temporal scope.
       </p>
 
       <div class="grid grid-2">
         <div class="card">
           <h3>Core LAW-N Repositories</h3>
-          <p>Specs, profiles, engines, and a notebook hub for experiments.</p>
+          <p>
+            The base repos define the laws, signal format, routing graph and
+            observability for the network.
+          </p>
           <ul class="list-links">
-            <li><a href="https://github.com/PEACEBINFLOW/minds-eye-law-n-network/tree/main" target="_blank">minds-eye-law-n-network</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/law-n-core-spec/tree/main" target="_blank">law-n-core-spec</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/law-n-device-profiles/tree/main" target="_blank">law-n-device-profiles</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/law-n-nsql-spec/tree/main" target="_blank">law-n-nsql-spec</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/law-n-nsql-engine/tree/main" target="_blank">law-n-nsql-engine</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/law-n-notebook-hub/tree/main" target="_blank">law-n-notebook-hub</a></li>
+            <!-- TODO: plug real links -->
+            <li><a href="#" target="_blank">LAW-N Core Spec</a></li>
+            <li><a href="#" target="_blank">LAW-N Signal Engine</a></li>
+            <li><a href="#" target="_blank">LAW-N Routing Graph</a></li>
+            <li><a href="#" target="_blank">LAW-N Observability</a></li>
           </ul>
+          <p class="card-footer">
+            The original four-repo “Bhadri” launch proved that you can describe
+            a network by its laws, not its cables.
+          </p>
         </div>
 
         <div class="card">
-          <h3>LAW-N SQL & Signal Layer</h3>
+          <h3>Network SQL & Event Loops</h3>
           <p>
-            SQL and simulation layers for running LAW-N over relational backends and time-aware queries.
+            Network SQL experiments live on top of LAW-N: queries become
+            programmable routes, and the event loop becomes a breathing system
+            that feeds agents, ledgers and UIs.
           </p>
+          <p class="pill">“The event loop breathes for the web.”</p>
           <ul class="list-links">
-            <li><a href="https://github.com/PEACEBINFLOW/law-n-sql-core/tree/main" target="_blank">law-n-sql-core</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/law-n-signal-sim/tree/main" target="_blank">law-n-signal-sim</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/law-n-sql-playground/tree/main" target="_blank">law-n-sql-playground</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/law-n-sql-api/tree/main" target="_blank">law-n-sql-api</a></li>
+            <li><a href="#" target="_blank">Network SQL Engine</a></li>
+            <li><a href="#" target="_blank">Network SQL Playground</a></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- NETWORK SQL -->
-    <section id="network-sql">
-      <h2>Network SQL</h2>
-      <p class="section-desc">
-        Network SQL extends traditional SQL with time, networks, and flows — turning queries into programmable routes across LAW-N and MindsEye.
-      </p>
-
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>MindsEye SQL & Cloud Fabric</h3>
-          <p>Bridges between MindsEye, LAW-N, and storage backends.</p>
-          <ul class="list-links">
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-sql-core/tree/main" target="_blank">mindseye-sql-core</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-sql-bridges/tree/main" target="_blank">mindseye-sql-bridges</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-cloud-fabric/tree/main" target="_blank">mindseye-cloud-fabric</a></li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>LAW-N Network SQL Stack</h3>
-          <p>
-            LAW-N’s SQL and NSQL components used for network-native query execution.
-            (See also LAW-N SQL repos in the section above.)
-          </p>
-          <ul class="list-links">
-            <li><a href="https://github.com/PEACEBINFLOW/law-n-sql-core/tree/main" target="_blank">law-n-sql-core</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/law-n-nsql-engine/tree/main" target="_blank">law-n-nsql-engine</a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- MINDSEYE -->
+    <!-- MINDS EYE -->
     <section id="mindseye">
       <h2>MindsEye</h2>
       <p class="section-desc">
-        MindsEye is the cognitive layer — agents, event ledgers, and time-labeled perception built on top of LAW-N and Network SQL.
+        MindsEye is the cognitive layer over LAW-N and Network SQL. It treats
+        inboxes, notifications, logs and ledgers as one continuous perception
+        stream rather than scattered tables and logs.
       </p>
 
-      <div class="grid grid-2">
+      <div class="stack-layout">
         <div class="card">
-          <h3>MindsEye Core & Google Stack</h3>
-          <p>Core MindsEye repos and Google-native integrations.</p>
+          <h3>Agents, Ledgers & Notifications</h3>
+          <p>
+            MindsEye experiments with “agent OS” designs: email as events,
+            calendar as time blocks, ledgers as perception history. Projects in
+            this branch connect directly into Google Workspace, SQL backends and
+            binary pattern engines.
+          </p>
           <ul class="list-links">
-            <li><a href="https://github.com/PEACEBINFLOW/minds-eye-core/tree/main" target="_blank">minds-eye-core</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/minds-eye-search-engine/tree/main" target="_blank">minds-eye-search-engine</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/minds-eye-gworkspace-connectors/tree/main" target="_blank">minds-eye-gworkspace-connectors</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/minds-eye-dashboard/tree/main" target="_blank">minds-eye-dashboard</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/minds-eye-automations/tree/main" target="_blank">minds-eye-automations</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/minds-eye-playground/tree/main" target="_blank">minds-eye-playground</a></li>
+            <li><a href="#" target="_blank">MindsEye Core</a></li>
+            <li><a href="#" target="_blank">MindsEye Google Ledger</a></li>
+            <li><a href="#" target="_blank">MindsEye Notification Project</a></li>
           </ul>
+          <p class="card-footer">
+            The 5-Day Google AI Agents Intensive series on DEV walks through how
+            MindsEye evolved from “one agent” into a full fabric.
+          </p>
         </div>
 
-        <div class="card">
-          <h3>MindsEye Workspace & Automation Layer</h3>
-          <p>Automation, analytics, and workflows embedded into productivity ecosystems.</p>
-          <ul class="list-links">
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-workspace-automation/tree/main" target="_blank">mindseye-workspace-automation</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-google-ledger" target="_blank">mindseye-google-ledger</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-gemini-orchestrator" target="_blank">mindseye-gemini-orchestrator</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-google-devlog/tree/main" target="_blank">mindseye-google-devlog</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-google-analytics/tree/main" target="_blank">mindseye-google-analytics</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-google-workflows/tree/main" target="_blank">mindseye-google-workflows</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid grid-2" style="margin-top:0.85rem;">
-        <div class="card">
-          <h3>MindsEye Binary & Runtime Layer</h3>
-          <p>Binary engines, runtime shells, and device-level flows.</p>
-          <ul class="list-links">
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-binary-engine/tree/main" target="_blank">mindseye-binary-engine</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-chrome-agent-shell/tree/main" target="_blank">mindseye-chrome-agent-shell</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-android-lawt-runtime/tree/main" target="_blank">mindseye-android-lawt-runtime</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-moving-library/tree/main" target="_blank">mindseye-moving-library</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-data-splitter/tree/main" target="_blank">mindseye-data-splitter</a></li>
-            <li><a href="https://github.com/PEACEBINFLOW/mindseye-kaggle-binary-ledger/tree/main" target="_blank">mindseye-kaggle-binary-ledger</a></li>
-          </ul>
+        <div class="stack-visual">
+          <!-- You can swap any of the stack images here -->
+          <img src="assets/img/kaggle-stack-1.png" alt="Google events, LAW-T time blocks and Kaggle binary ledger stack" />
         </div>
       </div>
     </section>
 
-    <!-- OTHER PROJECTS -->
-    <section id="projects">
-      <h2>Other Projects & Ecosystems</h2>
+    <!-- LAW-T & BINARY LEDGERS -->
+    <section id="lawt">
+      <h2>LAW-T, Binary Pattern Engines & Kaggle Ledgers</h2>
       <p class="section-desc">
-        Beyond LAW-N, Network SQL, and MindsEye, Sageworks AEI spans experimental languages, temporal runtimes, and dimensional UI systems.
+        LAW-T is a time-native programming model that writes directly into
+        binary ledgers. Kaggle is used as a proving ground for these ideas:
+        binary datasets, entropy scores, pattern engines and trading-style
+        evaluation loops.
       </p>
 
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Dimensional UI / UNO</h3>
-          <p>Dimensional user interface experiments and hypercube-based patterns.</p>
-          <ul class="list-links">
-            <li><a href="https://github.com/PEACEBINFLOW/dimensional-ui-hypercube-uno/tree/main" target="_blank">dimensional-ui-hypercube-uno</a></li>
-          </ul>
+      <div class="stack-layout">
+        <div class="stack-visual">
+          <img src="assets/img/kaggle-stack-2.png" alt="Layered binary pattern engine and Kaggle ledger visualization" />
         </div>
 
         <div class="card">
-          <h3>More Repositories</h3>
+          <h3>Binary Pattern Engines</h3>
           <p>
-            Explore the rest of the ecosystem directly on GitHub.
+            The pattern engines sit between raw event streams and higher-level
+            reasoning. They turn bits into shapes, shapes into flows, and flows
+            into scores.
           </p>
           <ul class="list-links">
-            <li><a href="https://github.com/PEACEBINFLOW" target="_blank">All Sageworks AEI Repos (GitHub)</a></li>
+            <li><a href="#" target="_blank">Binary Pattern Engine Repo</a></li>
+            <li><a href="#" target="_blank">LAW-T Time Block Runner</a></li>
           </ul>
+          <p class="card-footer">
+            Kaggle competitions act as a public arena: scores, entropy and
+            pattern performance are tested in the open.
+          </p>
         </div>
       </div>
     </section>
@@ -217,82 +647,93 @@
     <section id="dev">
       <h2>DEV Community Highlights</h2>
       <p class="section-desc">
-        Curated highlights from DEV Community — including the LAW Network series, Google AI Agents Intensive reflections, and temporal system essays.
+        These posts document the evolution of SageWorks AI — from LAW-T and
+        LAW-N to MindsEye and the Google AI Agents Intensive. Each link points
+        back to the full article on DEV.
       </p>
 
-      <div class="grid">
+      <div class="grid grid-2">
         <div class="card">
-          <h3>DEV Profile</h3>
-          <p>
-            Full list of posts, including LAW-N series, MindsEye x Google AI Stack, and competition entries.
-          </p>
+          <h3>LAW-N & Network Stack</h3>
+          <p>Core LAW-N posts that lay down the theory and the practical stack.</p>
           <ul class="list-links">
-            <li><a href="https://dev.to/peacebinflow" target="_blank">DEV Profile — @peacebinflow</a></li>
+            <!-- TODO: plug your actual URLs -->
+            <li><a href="#" target="_blank">LAW-N Series, Part 3 — Opening the Signal-Native Stack</a></li>
+            <li><a href="#" target="_blank">LAW-N: The Network Layer for MindsEye (Thesis)</a></li>
+            <li><a href="#" target="_blank">The Network Renaissance</a></li>
           </ul>
         </div>
 
         <div class="card">
-          <h3>Forem Profile</h3>
-          <p>
-            Extended community presence powered by the Forem ecosystem.
-          </p>
+          <h3>MindsEye x Google AI</h3>
+          <p>Challenge posts currently ranking in the Google AI competition feeds.</p>
           <ul class="list-links">
-            <li><a href="https://forem.com/peacebinflow" target="_blank">Forem Profile — peacebinflow</a></li>
+            <li><a href="#" target="_blank">My 5-Day AI Agents Intensive Journey — Part 1–5</a></li>
+            <li><a href="#" target="_blank">I Built a MindsEye x Google AI Stack in 6 Repos</a></li>
+            <li><a href="#" target="_blank">MindsEye Flow Engine — Turning Postgres Into a Thinking System</a></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- KAGGLE & DATASETS -->
+    <!-- KAGGLE -->
     <section id="kaggle">
       <h2>Kaggle Notebooks & Datasets</h2>
       <p class="section-desc">
-        Public notebooks and datasets for MindsEye and LAW-N simulations, including live ledgers and multi-layer G2N experiments.
+        Kaggle is used as both a lab and a scoreboard: experiments with binary
+        ledgers, LAW-T time blocks and event-driven evaluation.
       </p>
 
       <div class="grid grid-2">
         <div class="card">
-          <h3>Kaggle Profile & Workspace</h3>
-          <ul class="list-links">
-            <li><a href="https://www.kaggle.com/peacebinflow" target="_blank">Kaggle Profile — peacebinflow</a></li>
-            <li><a href="https://www.kaggle.com/work" target="_blank">Kaggle Workspace</a></li>
-          </ul>
-        </div>
-
-        <div class="card">
           <h3>Notebooks</h3>
           <ul class="list-links">
-            <li><a href="https://www.kaggle.com/code/peacebinflow/mindseye-notebook" target="_blank">MindsEye Notebook</a></li>
-            <li><a href="https://www.kaggle.com/code/peacebinflow/g2n-google-layer" target="_blank">G2N — Google Layer</a></li>
-            <li><a href="https://www.kaggle.com/code/peacebinflow/g2n-mindseye-core-layer" target="_blank">G2N — MindsEye Core Layer</a></li>
-            <li><a href="https://www.kaggle.com/code/peacebinflow/g2n-device-binary-layer" target="_blank">G2N — Device Binary Layer</a></li>
+            <!-- TODO: add real links -->
+            <li><a href="#" target="_blank">MindsEye Binary Ledger Snapshot — Notebook</a></li>
+            <li><a href="#" target="_blank">LAW-T Time Blocks on Google Workspace Events</a></li>
           </ul>
         </div>
 
         <div class="card">
           <h3>Datasets</h3>
           <ul class="list-links">
-            <li><a href="https://www.kaggle.com/datasets/peacebinflow/live-mindseye" target="_blank">Live MindsEye Dataset</a></li>
+            <li><a href="#" target="_blank">Kaggle Binary Ledger Dataset</a></li>
+            <li><a href="#" target="_blank">Events Payloads / Nodes Trace</a></li>
           </ul>
+          <p class="card-footer">
+            Scores, entropy and pattern metrics here often feed back into the design of LAW-N and MindsEye.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- IMAGE PROMPTS -->
-    <section id="prompts">
-      <h2>Image Prompts Library</h2>
+    <!-- VISUAL GALLERY -->
+    <section id="gallery">
+      <h2>Visual Language of SageWorks AI</h2>
       <p class="section-desc">
-        A small curated library of prompts used to generate LAW-N, MindsEye, and temporal-network visuals. Visitors can copy-paste and adapt.
+        A small selection of visuals that map the ideas behind SageWorks AI:
+        perception, event loops, stacked ledgers and temporal cityscapes.
       </p>
 
-      <div class="card">
-        <h3>Sample Prompt Set</h3>
-        <p>(You can replace these with your real prompt collections.)</p>
-        <ul class="list-links">
-          <li>“A glowing hypercube network floating over a desert city at night, lines of light representing time-labeled data flows, cinematic, ultra detailed.”</li>
-          <li>“A temporal OS interface visualized as layered translucent panels, each panel showing networks, clocks, and agents interacting in real time, holographic UI.”</li>
-          <li>“A neural desert city where each building is a data node, law-like constraints visualized as rings of light around the skyline, soft volumetric lighting.”</li>
-        </ul>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="assets/img/hero-eye-2.png" alt="Geometric eye with async syntax" />
+          <div class="gallery-caption">
+            “Perception redefined through syntax.” · MindsEye / LAW-T aesthetic.
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/img/event-loop.png" alt="Glowing ring as event loop over digital city" />
+          <div class="gallery-caption">
+            “The event loop breathes for the web.” · LAW-N & Network SQL.
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/img/kaggle-stack-3.png" alt="Layered binary blocks and ledger score" />
+          <div class="gallery-caption">
+            Google Workspace events → LAW-T time blocks → Binary pattern engines → Kaggle Binary Ledger.
+          </div>
+        </div>
       </div>
     </section>
 
@@ -300,28 +741,32 @@
     <section id="contact">
       <h2>Contact</h2>
       <p class="section-desc">
-        For collaboration, research, or ecosystem questions, reach out directly.
+        For collaboration, research proposals or ecosystem questions, reach out
+        directly. Most of the work is public by design — the interesting part is
+        what we can wire on top of it.
       </p>
 
       <div class="card">
-        <h3>Say hello</h3>
+        <h3>Reach Peace Thabiwa</h3>
         <p>
+          <!-- TODO: replace with your real email -->
           Email:
-          <a href="mailto:peacethabibinflow@proton.me">peacethabibinflow@proton.me</a>
+          <a href="mailto:you@example.com">you@example.com</a>
         </p>
         <p class="card-footer">
-          Also reachable via:
-          <a href="https://dev.to/peacebinflow" target="_blank" rel="noopener">DEV Community</a> ·
-          <a href="https://github.com/PEACEBINFLOW" target="_blank" rel="noopener">GitHub</a> ·
-          <a href="https://www.kaggle.com/peacebinflow" target="_blank" rel="noopener">Kaggle</a> ·
-          <a href="https://forem.com/peacebinflow" target="_blank" rel="noopener">Forem</a>
+          Also active on:
+          <!-- TODO: plug real profiles -->
+          <a href="#" target="_blank" rel="noopener">DEV Community</a> ·
+          <a href="#" target="_blank" rel="noopener">GitHub</a> ·
+          <a href="#" target="_blank" rel="noopener">Kaggle</a> ·
+          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
         </p>
       </div>
     </section>
   </main>
 
   <footer>
-    © <span id="year"></span> Sageworks AEI · Built by Peace Thabiwa · Hosted on GitHub Pages
+    © <span id="year"></span> SageWorks AI · Built by Peace Thabiwa · Hosted on GitHub Pages
   </footer>
 
   <script>
